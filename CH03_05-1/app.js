@@ -7,6 +7,8 @@ const store = {
     currentPage: 1,
 };
 
+
+
 function getData(url){
     ajax.open('GET', url, false);
     //false 동기, true 비동기
@@ -43,7 +45,7 @@ function newsFeed(){
     newsList.push( `
     <li>
         <a href="#/show/${newsFeed[i].id}">
-        ${newsFeed[i].title} (${newsFeed[i].comments_cuont})
+        ${newsFeed[i].title} (${newsFeed[i].comments_count})
         </a>
     </li>
     `);

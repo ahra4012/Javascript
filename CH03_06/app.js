@@ -7,6 +7,8 @@ const store = {
     currentPage: 1,
 };
 
+console.log('-----------------11')
+
 function getData(url){
     ajax.open('GET', url, false);
     //false 동기, true 비동기
@@ -32,6 +34,8 @@ function newsDetail(){
 }
 
 function newsFeed(){
+  console.log('-------------')
+
     let currentPage = 1;
     const newsFeed = getData(NEWS_URL);
     const newsList = [];
@@ -53,13 +57,15 @@ function newsFeed(){
     newsList.push('<ul>');
 
     for(let i = (store.currentPage - 1) * 10; i < store.currentPage * 10; i++){
-    newsList.push( `
-    <li>
-        <a href="#/show/${newsFeed[i].id}">
-        ${newsFeed[i].title} (${newsFeed[i].comments_count})
-        </a>
-    </li>
-    `);
+      console.log(newsFeed)
+
+      newsList.push( `
+        <li>
+            <a href="#/show/${newsFeed[i].id}">
+            ${newsFeed[i].title} (${newsFeed[i].comments_count})
+            </a>
+        </li>
+      `);
     }
     template = template.replace('{{__news_feed__}}', newsList.join(''));
     template = template.replace('{{__prev_page__}}', store.currentPage > 1 ? store.currentPage -1 : 1);
